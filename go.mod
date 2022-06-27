@@ -1,3 +1,3 @@
-module github.com/darth-licht/go_learn
+module go_learn
 
 go 1.18

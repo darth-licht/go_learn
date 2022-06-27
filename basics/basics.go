@@ -23,6 +23,22 @@ func ExtractPowers(saiyans []*Saiyan) []int {
 	return powers
 }
 
+func ExtractNameAndFatherName(saiyan *Saiyan) (string, string) {
+	return saiyan.Name, saiyan.Father.Name
+}
+
+// ExtractNamedNameAndFatherName uses named return values
+// NB consecutive values of the same type can share one type declaration
+func ExtractNamedNameAndFatherName(saiyan *Saiyan) (name, fatherName string) {
+	// named return values allow you to use the names as variables
+	name = saiyan.Name
+	fatherName = saiyan.Father.Name
+	// just returning automatically returns the named values
+	// this is known as naked return. it should only be used in short functions
+	// it may reduce readability in long functions
+	return
+}
+
 func ExtractPowers2(saiyans []*Saiyan) []int {
 	powers := make([]int, 0, len(saiyans))
 	for _, saiyan := range saiyans {
@@ -88,6 +104,10 @@ func ShowcaseBasics() {
 	}
 	fmt.Printf("Powers = %d\n", ExtractPowers(superSaiyans))
 	fmt.Printf("Powers2 = %d\n", ExtractPowers2(superSaiyans))
+	fmt.Print("Multiple return values; ")
+	fmt.Println(ExtractNameAndFatherName(gohan))
+	fmt.Print("Named multiple return values; ")
+	fmt.Println(ExtractNamedNameAndFatherName(gohan))
 
 	smartSaiyans := make([]*Saiyan, 0, 10)
 	fmt.Printf("Slice array capacity = %d\n", cap(smartSaiyans))

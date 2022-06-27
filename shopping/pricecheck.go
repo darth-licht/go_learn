@@ -1,6 +1,6 @@
 package shopping
 
-import "github.com/darth-licht/go_learn/shopping/db"
+import "go_learn/shopping/db"
 
 func PriceCheck(itemId int) (float64, bool) {
 	item := db.LoadItem(itemId)

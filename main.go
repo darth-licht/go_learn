@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/darth-licht/go_learn/basics"
-	"github.com/darth-licht/go_learn/concurrency"
-	"github.com/darth-licht/go_learn/shopping"
+	"go_learn/basics"
+	"go_learn/concurrency"
+	"go_learn/shopping"
 )
 
 func main() {
