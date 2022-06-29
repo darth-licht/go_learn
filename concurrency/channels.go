@@ -16,6 +16,10 @@ func ShowcaseChannels() {
 
 	for i := 0; i < 20; i++ {
 		c <- rand.Int()
+		// use close(c) this to close the channel c
+		// usually this is done only to signal to receivers that
+		// there'll no longer be values coming through the channel
+		// close(c)
 		time.Sleep(time.Millisecond * 50)
 	}
 
@@ -118,6 +122,8 @@ func (w Worker) process(c chan int) {
 
 func (w Worker) processSleeper(c chan int) {
 	for {
+		// data, ok := <-c // is also valid
+		// (ok) signifies whether the channel is not closed
 		data := <-c
 		fmt.Printf("worker %d got %d\n", w.id, data)
 		// this will make worker unavailable to receive data and thus
