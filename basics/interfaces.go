@@ -8,12 +8,10 @@ type Logger interface {
 	Log(message string)
 }
 
-type ConsoleLogger struct {
-	// implementing Logger interface
-	logger Logger
-}
+type ConsoleLogger struct{}
 
 // Log function from Logger interface
+// implementation is implicit
 func (logger ConsoleLogger) Log(message string) {
 	fmt.Println(message)
 }
@@ -28,7 +26,8 @@ func process(adder Add) int {
 //}
 
 func ShowcaseInterfaces() {
-	logger := ConsoleLogger{}
+	// ConsoleLogger is implicitly Logger cos it has a Log(string) function
+	var logger Logger = ConsoleLogger{}
 	logger.Log(">>>>Start interfaces<<<<")
 	fmt.Printf("%d\n", process(func(a int, b int) int {
 		return a + b
