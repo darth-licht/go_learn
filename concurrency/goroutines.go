@@ -48,7 +48,15 @@ func showcaseGoroutinesWithLock() {
 		go func() {
 			lock.Lock()
 			// only one goroutine can be here at any given time
-			defer lock.Unlock() // defer executes right-hand code when function exits
+
+			// defer executes right-hand code when function exits
+			// however, code's (function's) arguments, if any are executed immediately
+			// a functions defer-ed calls are put into a stack and are executed
+			// in a Last in First out order eg;
+			// for i := 0; i < 10; i++ {
+			//		defer fmt.Println(i)
+			//	}
+			defer lock.Unlock()
 			counter++
 			fmt.Println(counter)
 		}()
